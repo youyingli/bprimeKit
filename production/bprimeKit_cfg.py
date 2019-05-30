@@ -54,7 +54,7 @@ process.load('FWCore.MessageService.MessageLogger_cfi')
 process.MessageLogger.categories.append('HLTrigReport')
 process.MessageLogger.cerr.FwkReport.reportEvery = 100
 if( options.Debug ):
-   process.MessageLogger.cerr.FwkReport.reportEvery = 1
+    process.MessageLogger.cerr.FwkReport.reportEvery = 1
 
 process.load('Configuration.EventContent.EventContent_cff')
 process.load('Configuration.StandardSequences.GeometryDB_cff')
@@ -79,38 +79,45 @@ print '\nFinished jet toolbox setup.....\n'
 #   Settings for Egamma Identification and Energy Correction bug fixing
 #-------------------------------------------------------------------------------
 # ref : https://twiki.cern.ch/twiki/bin/view/CMS/EgammaMiniAODV2#2017_MiniAOD_V2
+### tmp 2018 only
 from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
 setupEgammaPostRecoSeq(
     process,
-    runVID = True,
-    runEnergyCorrections = True if mysetting.Year == '2017' else False,
-    era = '2017-Nov17ReReco' if mysetting.Year == '2017' else '2016-Legacy'
+    runEnergyCorrections = False,
+    era = '2018-Prompt'
     )
 
+process.externalCorrectionSequence = cms.Sequence()
 #-------------------------------------------------------------------------------
 #   Settings for MET bug fixing
 #-------------------------------------------------------------------------------
-# ref : https://twiki.cern.ch/twiki/bin/viewauth/CMS/MissingETUncertaintyPrescription#Instructions_for_9_4_X_X_9_for_2
+# ref : https://twiki.cern.ch/twiki/bin/viewauth/CMS/MissingETUncertaintyPrescription#Instructions_for_9_4_X_X_9_or_10
 from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
-runMetCorAndUncFromMiniAOD (
-    process,
-    isData = mysetting.isData,
-    fixEE2017 = True,
-    fixEE2017Params = {'userawPt': True, 'ptThreshold':50.0, 'minEtaThreshold':2.65, 'maxEtaThreshold': 3.139},
-    postfix = "ModifiedMET"
-    )
+
+if mysetting.Year == '2017':
+    runMetCorAndUncFromMiniAOD (
+        process,
+        isData = mysetting.isData,
+        fixEE2017 = True,
+        fixEE2017Params = {'userawPt': True, 'ptThreshold':50.0, 'minEtaThreshold':2.65, 'maxEtaThreshold': 3.139},
+        postfix = "ModifiedMET"
+        )
+    process.externalCorrectionSequence *= process.fullPatMetSequenceModifiedMET
 
 #-------------------------------------------------------------------------------
 #   Level 1 ECAL prefiring
 #-------------------------------------------------------------------------------
 # ref : https://twiki.cern.ch/twiki/bin/viewauth/CMS/L1ECALPrefiringWeightRecipe
 from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
-process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
-    DataEra = cms.string('2017BtoF' if mysetting.Year == '2017' else '2016BtoH'),
-    UseJetEMPt = cms.bool(False),
-    PrefiringRateSystematicUncty = cms.double(0.2),
-    SkipWarnings = False
-    )
+
+if mysetting.Year != '2018' and not mysetting.isData:
+    process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
+        DataEra = cms.string('2017BtoF' if mysetting.Year == '2017' else '2016BtoH'),
+        UseJetEMPt = cms.bool(False),
+        PrefiringRateSystematicUncty = cms.double(0.2),
+        SkipWarnings = False
+        )
+    process.externalCorrectionSequence *= process.prefiringweight
 
 #-------------------------------------------------------------------------------
 #   bprimeKit configuration importing
@@ -126,13 +133,6 @@ process.bprimeKit = mysetting.bprimeKit
 #   Final output settings
 #-------------------------------------------------------------------------------
 # process.SimpleMemoryCheck = cms.Service('SimpleMemoryCheck',ignoreTotal = cms.untracked.int32(1) )
-
-process.externalCorrectionSequence = cms.Sequence()
-if ( mysetting.Year == '2017' ):
-    process.externalCorrectionSequence *= process.fullPatMetSequenceModifiedMET
-
-if ( not mysetting.isData ):
-    process.externalCorrectionSequence *= process.prefiringweight
 
 process.Path = cms.Path(
     process.egammaPostRecoSeq*

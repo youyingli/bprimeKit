@@ -1107,7 +1107,7 @@ public:
     root->Branch( ( name+".ElEoverP" ).c_str(),                        ElEoverP,                        ( name+".ElEoverP["+name+".Size]/F" ).c_str() );
     root->Branch( ( name+".EldeltaEta" ).c_str(),                      EldeltaEta,                      ( name+".EldeltaEta["+name+".Size]/F" ).c_str() );
     root->Branch( ( name+".EldeltaPhi" ).c_str(),                      EldeltaPhi,                      ( name+".EldeltaPhi["+name+".Size]/F" ).c_str() );
-    root->Branch( ( name+".EldeltaEtaSeed" ).c_str(),                  EldeltaEtaSeed,                  ( name+".EldeltaEtaSeed["+name+".Size]/F" ).c_str() );
+    root->Branch( ( name+".EldeltaPhiSeed" ).c_str(),                  EldeltaEtaSeed,                  ( name+".EldeltaPhiSeed["+name+".Size]/F" ).c_str() );
     root->Branch( ( name+".isPFTau" ).c_str(),                         isPFTau,                         ( name+".isPFTau["+name+".Size]/I" ).c_str() );
     root->Branch( ( name+".GenPt" ).c_str(),                           GenPt,                           ( name+".GenPt["+name+".Size]/F" ).c_str() );
     root->Branch( ( name+".GenEta" ).c_str(),                          GenEta,                          ( name+".GenEta["+name+".Size]/F" ).c_str() );
@@ -1275,7 +1275,7 @@ public:
     root->SetBranchAddress( ( name+".ElEoverP" ).c_str(),                        ElEoverP ); 
     root->SetBranchAddress( ( name+".EldeltaEta" ).c_str(),                      EldeltaEta ); 
     root->SetBranchAddress( ( name+".EldeltaPhi" ).c_str(),                      EldeltaPhi ); 
-    root->SetBranchAddress( ( name+".EldeltaEtaSeed" ).c_str(),                  EldeltaEtaSeed ); 
+    root->SetBranchAddress( ( name+".EldeltaPhiSeed" ).c_str(),                  EldeltaEtaSeed ); 
     root->SetBranchAddress( ( name+".isPFTau" ).c_str(),                         isPFTau );
     root->SetBranchAddress( ( name+".GenPt" ).c_str(),                           GenPt );
     root->SetBranchAddress( ( name+".GenEta" ).c_str(),                          GenEta );
