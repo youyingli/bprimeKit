@@ -10,10 +10,10 @@ crabcfgformat="""
 from CRABClient.UserUtilities import config, getUsernameFromSiteDB
 config = config()
 
-config.General.requestName = 'BPK_94X_{0}'
+config.General.requestName = 'BPK_102X_{0}'
 config.General.workArea = 'bprimeKit_crab'
 config.General.transferOutputs = True
-config.General.transferLogs = True
+config.General.transferLogs = False
 
 config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = './bprimeKit_cfg.py'
@@ -26,7 +26,7 @@ config.JobType.pyCfgParams = [
 config.JobType.inputFiles = [
 ]
 
-config.JobType.maxMemoryMB      = 2000 # Requesting slightly more memory
+config.JobType.maxMemoryMB      = 2500 # Requesting slightly more memory
 config.JobType.maxJobRuntimeMin = 2000 # Requesting slightly more runtime
 
 config.Data.inputDataset  = '{2}'
@@ -34,6 +34,7 @@ config.Data.inputDBS      = 'global'
 config.Data.splitting     = 'LumiBased'
 config.Data.unitsPerJob   = {3}
 config.Data.outLFNDirBase = '{4}'
+config.Data.lumiMask      = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions18/13TeV/ReReco/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt'
 
 config.Site.storageSite = '{5}'
 """
@@ -46,8 +47,8 @@ import sys
 def submitsample(argv):
     parser=optparse.OptionParser()
     parser.add_option("-d","--dataset",dest='dataset',help='which dataset to run', default=None, type='string')
-    parser.add_option('-s','--site',dest='site',help='which site to store output', default='T2_CH_CERN', type='string')
-    parser.add_option('-l','--lfndir',dest='lfndir',help='the storage lfn directory' , default='/store/user/' + os.environ.get('USER') + '/BprimeKit_Ntuples_CMSSW_94X', type='string')
+    parser.add_option('-s','--site',dest='site',help='which site to store output', default='T2_TW_NCHC', type='string')
+    parser.add_option('-l','--lfndir',dest='lfndir',help='the storage lfn directory' , default='/store/user/' + os.environ.get('USER') + '/BprimeKit_Ntuples_CMSSW_102X', type='string')
 
     opt, args = parser.parse_args( argv )
 

@@ -76,13 +76,13 @@ PhotonNtuplizer::Analyze( const edm::Event& iEvent, const edm::EventSetup& iSetu
     // ----- Energy scale and smear correction and associated uncertainties --------------------------------
     // Twiki : https://twiki.cern.ch/twiki/bin/view/CMS/EgammaMiniAODV2
     // Internal Code : https://github.com/cms-sw/cmssw/blob/CMSSW_9_4_X/RecoEgamma/EgammaTools/src/PhotonEnergyCalibrator.cc#L93
-    PhotonInfo.PhoEnergyCorrFactor         [PhotonInfo.Size] = it_pho->userFloat("ecalEnergyPostCorr") / it_pho->energy(); 
-    PhotonInfo.PhoEnergyPreCorrErr         [PhotonInfo.Size] = it_pho->getCorrectedEnergyError(reco::Photon::P4type::regression2); 
-    PhotonInfo.PhoEnergyPostCorrErr        [PhotonInfo.Size] = it_pho->userFloat("ecalEnergyErrPostCorr"); 
-    PhotonInfo.PhoEnergyPostCorrScaleUp    [PhotonInfo.Size] = it_pho->userFloat("energyScaleUp"); 
-    PhotonInfo.PhoEnergyPostCorrScaleDown  [PhotonInfo.Size] = it_pho->userFloat("energyScaleDown"); 
-    PhotonInfo.PhoEnergyPostCorrSmearUp    [PhotonInfo.Size] = it_pho->userFloat("energySigmaUp"); 
-    PhotonInfo.PhoEnergyPostCorrSmearDown  [PhotonInfo.Size] = it_pho->userFloat("energySigmaDown"); 
+    //PhotonInfo.PhoEnergyCorrFactor         [PhotonInfo.Size] = it_pho->userFloat("ecalEnergyPostCorr") / it_pho->energy(); 
+    //PhotonInfo.PhoEnergyPreCorrErr         [PhotonInfo.Size] = it_pho->getCorrectedEnergyError(reco::Photon::P4type::regression2); 
+    //PhotonInfo.PhoEnergyPostCorrErr        [PhotonInfo.Size] = it_pho->userFloat("ecalEnergyErrPostCorr"); 
+    //PhotonInfo.PhoEnergyPostCorrScaleUp    [PhotonInfo.Size] = it_pho->userFloat("energyScaleUp"); 
+    //PhotonInfo.PhoEnergyPostCorrScaleDown  [PhotonInfo.Size] = it_pho->userFloat("energyScaleDown"); 
+    //PhotonInfo.PhoEnergyPostCorrSmearUp    [PhotonInfo.Size] = it_pho->userFloat("energySigmaUp"); 
+    //PhotonInfo.PhoEnergyPostCorrSmearDown  [PhotonInfo.Size] = it_pho->userFloat("energySigmaDown"); 
 
     // ----- Cut based photon ID and ID MVA (V2) ----------------------------------------------------------------
     // ----- Cut based photon ID -----

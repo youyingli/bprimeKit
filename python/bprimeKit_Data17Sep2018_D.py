@@ -15,7 +15,7 @@ import bpkFrameWork.bprimeKit.Ntuplizer18_cfi as ntpl
 #-------------------------------------------------------------------------------
 Year                 = '2018'
 isData               = True
-GlobalTag            = '102X_dataRun2_Prompt_v13'
+GlobalTag            = '102X_dataRun2_Prompt_v14'
 
 #-------------------------------------------------------------------------------
 #   BprimeKit input tags

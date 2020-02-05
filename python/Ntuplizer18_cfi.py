@@ -152,7 +152,8 @@ jetcommon = cms.PSet(
 #-------------------------------------------------------------------------
 ak4jetbase = jetcommon.clone()
 ak4jetbase.jettype = cms.string('AK4PFchs')
-ak4jetbase.jetsrc  = cms.InputTag('selectedPatJetsAK4PFCHS')
+#ak4jetbase.jetsrc  = cms.InputTag('selectedPatJetsAK4PFCHS')
+ak4jetbase.jetsrc  = cms.InputTag('slimmedJets')
 
 #ak4jetpuppi = jetcommon.clone()
 #ak4jetpuppi.jetname = cms.string('JetInfoPuppi')

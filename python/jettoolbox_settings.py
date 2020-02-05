@@ -35,7 +35,7 @@ def jettoolbox_settings( process , runMC ):
     #process.puppi.vertexName = cms.InputTag('offlineSlimmedPrimaryVertices')
     #process.puppi.useExistingWeights = cms.bool(True)
 
-    jetToolbox( process, 'ak4', 'ak4chs', 'edmOut',
+    jetToolbox( process, 'ak4', 'ak4chs', 'noOutput',
         runOnMC            = runMC,
         addQGTagger        = True,
         addPUJetID         = True,
@@ -164,5 +164,6 @@ def jettoolbox_settings( process , runMC ):
     #process.jetTask.add( process.QGTaggerAK4PFPuppi )
     #process.jetTask.add( process.patPuppiJetSpecificProducer )
     #process.jetTask.add( process.updatedPatJetsSelectedAK4PFPuppi )
-    JetToolBoxSequence = cms.Sequence( process.jetTask )
+    #JetToolBoxSequence = cms.Sequence( process.jetTask )
+    JetToolBoxSequence = cms.Sequence( process.patAlgosToolsTask )
     setattr( process, 'JetToolBoxSequence', JetToolBoxSequence)

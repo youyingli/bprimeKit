@@ -42,13 +42,13 @@ LeptonNtuplizer::FillElectron( const edm::Event& iEvent, const edm::EventSetup& 
     // ----- Energy scale and smear correction and associated uncertainties --------------------------------
     // Twiki : https://twiki.cern.ch/twiki/bin/view/CMS/EgammaMiniAODV2
     // Internal Code : https://github.com/cms-sw/cmssw/blob/CMSSW_9_4_X/RecoEgamma/EgammaTools/src/ElectronEnergyCalibrator.cc#L97
-    LepInfo.ElEnergyCorrFactor          [LepInfo.Size] = it_el->userFloat("ecalTrkEnergyPostCorr") / it_el->energy();
-    LepInfo.ElEnergyPreCorrErr          [LepInfo.Size] = it_el->userFloat("ecalTrkEnergyErrPreCorr");
-    LepInfo.ElEnergyPostCorrErr         [LepInfo.Size] = it_el->userFloat("ecalTrkEnergyErrPostCorr"); 
-    LepInfo.ElEnergyPostCorrScaleUp     [LepInfo.Size] = it_el->userFloat("energyScaleUp");
-    LepInfo.ElEnergyPostCorrScaleDown   [LepInfo.Size] = it_el->userFloat("energyScaleDown");
-    LepInfo.ElEnergyPostCorrSmearUp     [LepInfo.Size] = it_el->userFloat("energySigmaUp");
-    LepInfo.ElEnergyPostCorrSmearDown   [LepInfo.Size] = it_el->userFloat("energySigmaDown");
+    //LepInfo.ElEnergyCorrFactor          [LepInfo.Size] = it_el->userFloat("ecalTrkEnergyPostCorr") / it_el->energy();
+    //LepInfo.ElEnergyPreCorrErr          [LepInfo.Size] = it_el->userFloat("ecalTrkEnergyErrPreCorr");
+    //LepInfo.ElEnergyPostCorrErr         [LepInfo.Size] = it_el->userFloat("ecalTrkEnergyErrPostCorr"); 
+    //LepInfo.ElEnergyPostCorrScaleUp     [LepInfo.Size] = it_el->userFloat("energyScaleUp");
+    //LepInfo.ElEnergyPostCorrScaleDown   [LepInfo.Size] = it_el->userFloat("energyScaleDown");
+    //LepInfo.ElEnergyPostCorrSmearUp     [LepInfo.Size] = it_el->userFloat("energySigmaUp");
+    //LepInfo.ElEnergyPostCorrSmearDown   [LepInfo.Size] = it_el->userFloat("energySigmaDown");
 
     // ----- Cut based electron ID (V2) -------------------------------------------------------------------------
     // Twiki : https://twiki.cern.ch/twiki/bin/view/CMS/CutBasedElectronIdentificationRun2#Offline_selection_criteria_for_V

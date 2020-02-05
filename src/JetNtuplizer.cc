@@ -203,9 +203,9 @@ JetNtuplizer::Analyze( const edm::Event& iEvent, const edm::EventSetup& iSetup )
     // ------------------------------------------------------------------------------
     if( IsAK4() ){
       if( _jetname == "JetInfo" ){
-        JetInfo.QGTagsLikelihood [JetInfo.Size]        = it_jet->userFloat( "QGTaggerAK4PFCHS:qgLikelihood" );
-        JetInfo.PUJetIDfullDiscriminant [JetInfo.Size] = it_jet->userFloat( "AK4PFCHSpileupJetIdEvaluator:fullDiscriminant" );
-        JetInfo.PUJetIDcutbased [JetInfo.Size]         = it_jet->userInt( "AK4PFCHSpileupJetIdEvaluator:fullId" );
+        //JetInfo.QGTagsLikelihood [JetInfo.Size]        = it_jet->userFloat( "QGTaggerAK4PFCHS:qgLikelihood" );
+        //JetInfo.PUJetIDfullDiscriminant [JetInfo.Size] = it_jet->userFloat( "AK4PFCHSpileupJetIdEvaluator:fullDiscriminant" );
+        //JetInfo.PUJetIDcutbased [JetInfo.Size]         = it_jet->userInt( "AK4PFCHSpileupJetIdEvaluator:fullId" );
       } else if ( _jetname == "JetInfoPuppi" ){
         JetInfo.QGTagsLikelihood [JetInfo.Size]        = it_jet->userFloat( "QGTaggerAK4PFPuppi:qgLikelihood" );
         JetInfo.PUJetIDfullDiscriminant [JetInfo.Size] = it_jet->userFloat( "AK4PFPuppipileupJetIdEvaluator:fullDiscriminant" );
